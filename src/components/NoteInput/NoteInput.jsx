@@ -1,5 +1,17 @@
 import React, { useState, useContext } from 'react'
 import { ContextNote } from '../../context/Context'
+import styled from 'styled-components'
+
+const NoteInputContainer = styled.div`
+    min-width: 320px;
+`
+
+const NoteInputForm = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+`
 
 const NoteInput = () => {
 const [noteTitle, setNoteTitle] = useState('')
@@ -15,7 +27,8 @@ function createNote(event) {
         ...prevNoteCardList,
         {
             title: noteTitle,
-            text: noteText
+            text: noteText,
+            color: "#" + Math.floor(Math.random()*16777215).toString(16)
         }
     ]);
 
@@ -23,21 +36,24 @@ function createNote(event) {
 }
 
   return (
-    <div>
-        <input
-            placeholder="Título"
-            value={noteTitle}
-            onChange={(e) => setNoteTitle(e.target.value)}
-        />
-        <textarea
-            placeholder="Texto"
-            value={noteText}
-            onChange={(e) => setNoteText(e.target.value)}
-        />
-        <button onClick={createNote}>
-            Criar Nota
-        </button>
-    </div>
+    <NoteInputContainer>
+        <NoteInputForm onSubmit={createNote}>
+            <input
+                placeholder="Título"
+                value={noteTitle}
+                onChange={(e) => setNoteTitle(e.target.value)}
+            />
+            <input
+                placeholder="Texto"
+                value={noteText}
+                onChange={(e) => setNoteText(e.target.value)}
+            />
+            <button onClick={createNote}>
+                Criar Nota
+            </button>
+        </NoteInputForm>
+        
+    </NoteInputContainer>
   )
 }
 

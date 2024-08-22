@@ -1,8 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const NoteEditorContainer = styled.div`
+  display: none;
+`
+
 
 function NoteEditor() {
   return (
-    <div>NoteEditor</div>
+    <NoteEditorContainer>NoteEditor</NoteEditorContainer>
   )
 }
 
