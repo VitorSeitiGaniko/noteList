@@ -20,6 +20,11 @@ const NoteCardIcon = styled.span`
   cursor: pointer;
 `
 
+const NoteCardP = styled.p`
+  color: var(--color-white);
+  word-wrap: break-word;
+`
+
 function NoteCard({ noteData }) {
 
   const [noteCardEditorOpen, setNoteCardEditorOpen] = useState(false)
@@ -32,7 +37,7 @@ function NoteCard({ noteData }) {
     <NoteCardContainer bgColor={noteData.color}>
       <NoteCardIcon className='iconEdit' onClick={handleEditNote} ></NoteCardIcon>
         <h2 style={{color: 'var(--color-white)'}}>{noteData.title}</h2>
-        <p style={{color: 'var(--color-white)'}}>{noteData.text}</p>
+        <NoteCardP>{noteData.text}</NoteCardP>
 
       {noteCardEditorOpen && 
         <NoteEditor setNoteCardEditorOpen={setNoteCardEditorOpen} noteData={noteData}/>
