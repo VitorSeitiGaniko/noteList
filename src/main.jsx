@@ -1,8 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
-import NoteEditor from './components/NoteEditor/NoteEditor.jsx'
 import NoteList from './components/NoteList/NoteList.jsx'
 import NoteInput from './components/NoteInput/NoteInput.jsx'
 import { ContextNoteProvider } from './context/Context.jsx'
@@ -13,6 +11,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 46px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 createRoot(document.getElementById('root')).render(
@@ -20,7 +23,6 @@ createRoot(document.getElementById('root')).render(
   <Container>
     <NoteInput />
     <NoteList />
-    <NoteEditor />
   </Container>
   </ContextNoteProvider>
 )
