@@ -20,12 +20,18 @@ const NoteCardIcon = styled.span`
   cursor: pointer;
 `
 
+const NoteCardIconRemove = styled.span`
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+`
+
 const NoteCardP = styled.p`
   color: var(--color-white);
   word-wrap: break-word;
 `
 
-function NoteCard({ noteData }) {
+function NoteCard({ noteData, index, deleteNoteCard }) {
 
   const [noteCardEditorOpen, setNoteCardEditorOpen] = useState(false)
 
@@ -35,6 +41,7 @@ function NoteCard({ noteData }) {
 
   return (
     <NoteCardContainer bgColor={noteData.color}>
+      <NoteCardIconRemove className='iconRemove' onClick={() => deleteNoteCard(index)}></NoteCardIconRemove>
       <NoteCardIcon className='iconEdit' onClick={handleEditNote} ></NoteCardIcon>
         <h2 style={{color: 'var(--color-white)'}}>{noteData.title}</h2>
         <NoteCardP>{noteData.text}</NoteCardP>

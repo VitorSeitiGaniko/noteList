@@ -33,7 +33,7 @@ const NoteList = () => {
       )}
       <NoteListContainer>
         {context.noteCardList.map((note, index) => (
-          <NoteCard key={index} noteData={note} />
+          <NoteCard key={index} noteData={note} index={index} deleteNoteCard={context.deleteNoteCard}/>
         ))}
       </NoteListContainer>
     </div>
